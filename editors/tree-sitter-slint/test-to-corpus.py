@@ -38,7 +38,7 @@ def process_file(input, corpus):
     comment = ""
     with open(input, "r") as reader:
         line_number = 0
-        for line in reader.readlines():
+        for line in reader:
             line_number += 1
             strip_line = line.strip()
             if (
@@ -94,7 +94,7 @@ args = parser.parse_args()
 tests_dir = os.path.realpath(args.tests_dir)
 corpus_dir = os.path.realpath(args.corpus_dir)
 
-corpus_file = os.path.join(corpus_dir, os.path.basename(tests_dir) + ".txt")
+corpus_file = os.path.join(corpus_dir, f"{os.path.basename(tests_dir)}.txt")
 
 with open(corpus_file, "w") as corpus:
     for file in os.listdir(tests_dir):
